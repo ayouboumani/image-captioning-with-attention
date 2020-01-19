@@ -1,0 +1,32 @@
+--- /scratch/ph1130/show-attend-tell/models.py
++++ /scratch/ph1130/show-attend-tell/models.py
+@@ -5,7 +5,7 @@
+ 
+     def __init__(self, features_dim, decoder_dim, attention_dim, dropout=0.5):
+         """
+-        :param features_dim: feature size of encoded images
++        :param encoder_dim: feature size of encoded images
+         :param decoder_dim: size of decoder's RNN
+         :param attention_dim: size of the attention network
+         """
+@@ -20,15 +20,15 @@
+     def forward(self, image_features, decoder_hidden):
+         """
+         Forward propagation.
+-        :param image_features: encoded images, a tensor of dimension (batch_size, 36, features_dim)
++        :param encoder_out: encoded images, a tensor of dimension (batch_size, num_pixels, encoder_dim)
+         :param decoder_hidden: previous decoder output, a tensor of dimension (batch_size, decoder_dim)
+         :return: attention weighted encoding, weights
+         """
+-        att1 = self.features_att(image_features)  # (batch_size, 36, attention_dim)
++        att1 = self.features_att(image_features)  # (batch_size, num_pixels, attention_dim)
+         att2 = self.decoder_att(decoder_hidden)  # (batch_size, attention_dim)
+-        att = self.full_att(self.dropout(self.relu(att1 + att2.unsqueeze(1)))).squeeze(2)  # (batch_size, 36)
+-        alpha = self.softmax(att)  # (batch_size, 36)
++        att = self.full_att(self.dropout(self.relu(att1 + att2.unsqueeze(1)))).squeeze(2)  # (batch_size, num_pixels)
++        alpha = self.softmax(att)  # (batch_size, num_pixels)
+         attention_weighted_encoding = (image_features * alpha.unsqueeze(2)).sum(dim=1)  # (batch_size, features_dim)
+ 
+-        return attention_weighted_encoding,alpha
++        return attention_weighted_encoding
+ 
