@@ -1,6 +1,10 @@
 # Image captioning using region attention
 This is a code in Pytorch used for a project with Abdellah Kaissari in the course Object Recognition and Computer Vision (MVA Class 2019/2020).
 The project is about image captioning using region attention and focuses on the paper Bottom-Up and Top-Down Attention for Image Captioning and Visual Question Answering.
+
+
+![Attention regions ](footcaption.png)
+
 ## Getting Started
 
 
