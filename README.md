@@ -6,9 +6,9 @@ The project is about image captioning using region attention and focuses on the 
 
 ### Requirements
 
-Python 3.6
-Pytorch 0.4
-CUDA 9.0
+Python 3.6 \\
+Pytorch 0.4 \\
+CUDA 9.0 \\
 and a GPU of course...
 
 
