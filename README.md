@@ -6,9 +6,12 @@ The project is about image captioning using region attention and focuses on the 
 
 ### Requirements
 
-Python 3.6 \\
-Pytorch 0.4 \\
-CUDA 9.0 \\
+Python 3.6 
+
+Pytorch 0.4 
+
+CUDA 9.0 
+
 and a GPU of course...
 
 
@@ -51,11 +54,26 @@ conda deactivate
 
 ## Running the code
 
-### 0. Demo
+### 0. Pre-trained models
 
-### 1. Data preparation
+1. Bottom-Up: download from https://drive.google.com/file/d/10MBUgH_OygyEys59FNQ4qNGeQ9bl-ODb/view?usp=drivesdk
+and put it in bottom-up/models/. 
+This model is trained on Visual Genome.
+2. Top-Down: download from https://drive.google.com/file/d/10atC8rY7PdhnKW08INO33mEXYUyQ6G0N/view
+and put it in top-down/.
+This model is trained on Microsoft COCO dataset.
 
-### 2. Pre-trained models
+### 1. Demo
+
+In your working directory, create the folders: images/, features/ and captions/.
+Put your test images in the corresponding folder.
+1.Extract image features. First, activate the bottom env, go to the bottom directory and run either:
+```
+python extract_features.py --image_dir ../images --out_dir ../features
+```
+or if you want to view attention
+
+### 2. Data preparation
 
 ### 3. Training
 
